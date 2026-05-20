@@ -1,0 +1,408 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 28px;
+  min-height: calc(100vh - 60px);
+}
+
+.loading {
+  text-align: center;
+  padding: 80px;
+  color: var(--color-text-muted);
+  font-size: 16px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.pageSubtitle {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  margin: 4px 0 0;
+}
+
+/* ── Stats Grid ─────────────────────────────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 640px) { .statsGrid { grid-template-columns: 1fr; } }
+
+.statCard {
+  background: #fff;
+  border: 1.5px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.statTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statPct {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.statAmounts {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.statSpent {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+}
+
+.statBudget {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.statCalls {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* ── Progress Bar ────────────────────────────────────────────────────────── */
+.progressTrack {
+  height: 8px;
+  background: var(--color-surface);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.4s ease;
+  background: var(--color-primary);
+}
+
+/* ── Columns layout ─────────────────────────────────────────────────────── */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+}
+@media (max-width: 900px) { .columns { grid-template-columns: 1fr; } }
+
+/* ── Panel ───────────────────────────────────────────────────────────────── */
+.panel {
+  background: #fff;
+  border: 1.5px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.panelTitle {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0 0 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.panelDesc {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: -8px 0 16px;
+}
+
+.empty {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+/* ── Service list ────────────────────────────────────────────────────────── */
+.serviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.serviceRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--color-surface);
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.serviceLabel {
+  flex: 1;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.serviceCalls {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.serviceCost {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  min-width: 64px;
+  text-align: right;
+}
+
+/* ── Budget form ─────────────────────────────────────────────────────────── */
+.budgetForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.inputPrefix {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.inputPrefix span {
+  padding: 10px 12px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 15px;
+  border-right: 1.5px solid var(--color-border);
+}
+
+.input {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: var(--font);
+  color: var(--color-text);
+}
+
+.saveBtn {
+  padding: 12px 24px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 3px 10px rgba(0,88,190,0.3);
+  align-self: flex-start;
+}
+.saveBtn:hover:not(:disabled) { background: #004aad; }
+.saveBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.msgOk  { font-size: 13px; color: var(--color-success); font-weight: 600; }
+.msgErr { font-size: 13px; color: var(--color-error);   font-weight: 600; }
+
+/* ── Pricing note ────────────────────────────────────────────────────────── */
+.pricingNote {
+  padding: 14px 16px;
+  background: var(--color-surface);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.pricingNote strong {
+  display: block;
+  color: var(--color-text);
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.pricingTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.pricingTable td {
+  padding: 3px 0;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.pricingTable td:first-child {
+  font-weight: 700;
+  color: var(--color-text);
+  width: 110px;
+}
+
+/* ── History table ───────────────────────────────────────────────────────── */
+.historyTable {
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.historyHeader {
+  display: grid;
+  grid-template-columns: 140px 80px 1fr 80px 80px 70px;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--color-surface);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.historyRow {
+  display: grid;
+  grid-template-columns: 140px 80px 1fr 80px 80px 70px;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+.historyRow:last-child { border-bottom: none; }
+.historyRow:hover { background: var(--color-surface); }
+
+.historyTime {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.endpoint {
+  color: var(--color-text);
+  font-size: 13px;
+}
+
+.mono {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.cost {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: right;
+}
+
+/* ── Service pills ───────────────────────────────────────────────────────── */
+.servicePill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.svc_openai_gpt {
+  background: #EFF6FF;
+  color: #1D4ED8;
+}
+
+.svc_openai_whisper {
+  background: #F0FFF4;
+  color: #15803D;
+}
+
+.svc_anthropic_claude {
+  background: #FDF4FF;
+  color: #7E22CE;
+}
+
+/* ── Pagination ──────────────────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.pageBtn {
+  padding: 8px 18px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: all 0.15s;
+}
+.pageBtn:hover:not(:disabled) { background: #e5e7eb; }
+.pageBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.pageInfo {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 700px) {
+  .historyHeader, .historyRow {
+    grid-template-columns: 110px 64px 1fr 60px 60px 60px;
+    gap: 4px;
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+}

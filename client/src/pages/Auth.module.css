@@ -1,0 +1,287 @@
+/* ── Page ───────────────────────────────────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  background: #F0F5FF;
+}
+
+/* ── Left panel ─────────────────────────────────────────────────────────────── */
+.panel {
+  width: 48%;
+  flex-shrink: 0;
+  background: linear-gradient(150deg, #0058BE 0%, #004AA0 55%, #003480 100%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* dot grid overlay */
+.panel::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+.panelInner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 40px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Brand */
+.panelBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.90);
+}
+.panelBrandIcon {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 8px;
+  display: grid; place-items: center;
+}
+
+/* ── Card stack ─────────────────────────────────────────────────────────────── */
+.cardStack {
+  flex: 1;
+  position: relative;
+  margin: 40px 0 32px;
+}
+
+/* shared float card base */
+.floatCard {
+  position: absolute;
+  background: rgba(255,255,255,0.96);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  backdrop-filter: blur(8px);
+}
+
+/* ── SOAP note card (main, center-left) ─────────────────────────────────────── */
+.card1 {
+  left: 0; top: 20px;
+  width: 80%;
+  padding: 0;
+  overflow: hidden;
+  animation: floatA 5s ease-in-out infinite;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #F8F9FA;
+  border-bottom: 1px solid #E9ECEF;
+}
+.cardDot   { width: 10px; height: 10px; border-radius: 50%; }
+.cardLabel { margin-left: 6px; font-size: 0.75rem; font-weight: 600; color: #374151; flex: 1; }
+.cardLive  { display: flex; align-items: center; gap: 5px; font-size: 0.68rem; color: #6B7280; }
+.liveDot   {
+  width: 6px; height: 6px; background: #22C55E; border-radius: 50%;
+  animation: blink 1.3s ease-in-out infinite;
+}
+
+.soapRow {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #F3F4F6;
+  animation: slideIn 0.5s ease both;
+}
+.soapRow:last-child { border-bottom: none; }
+
+.soapBadge {
+  width: 22px; height: 22px; flex-shrink: 0;
+  border-radius: 5px;
+  display: grid; place-items: center;
+  font-size: 0.72rem; font-weight: 700;
+  margin-top: 1px;
+}
+.soapLbl { display: block; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 2px; }
+.soapVal { font-size: 0.76rem; color: #374151; margin: 0; line-height: 1.4; }
+
+/* ── Stats cards ────────────────────────────────────────────────────────────── */
+.card2 {
+  right: 0; top: 0;
+  padding: 12px 16px;
+  animation: floatB 4.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+.card3 {
+  left: 4%; bottom: 60px;
+  padding: 12px 16px;
+  animation: floatC 5.5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+.card4 {
+  right: 0; bottom: 30px;
+  padding: 12px 16px;
+  width: 46%;
+  animation: floatB 4s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.statRow  { display: flex; align-items: center; gap: 10px; }
+.statIcon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  background: #DBEAFE; color: #0058BE;
+  border-radius: 8px; display: grid; place-items: center;
+}
+.statNum  { font-size: 0.88rem; font-weight: 700; color: #111827; margin: 0 0 1px; }
+.statTxt  { font-size: 0.7rem; color: #6B7280; margin: 0; }
+
+/* Waveform */
+.waveLabel { font-size: 0.7rem; font-weight: 600; color: #374151; display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.recDot { width: 6px; height: 6px; background: #EF4444; border-radius: 50%; animation: blink 1s ease-in-out infinite; }
+.waveRow { display: flex; align-items: center; gap: 2px; height: 24px; }
+.waveBar {
+  width: 2.5px; background: #0058BE; border-radius: 2px; min-height: 4px;
+  animation: wavePulse 1s ease-in-out infinite;
+}
+
+/* ── Panel footer ────────────────────────────────────────────────────────────── */
+.panelFoot { }
+.panelHeadline { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.panelSub { font-size: 0.82rem; color: rgba(255,255,255,0.60); line-height: 1.6; }
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes floatA {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes floatB {
+  0%,100% { transform: translateY(0px) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(0.5deg); }
+}
+@keyframes floatC {
+  0%,100% { transform: translateY(0px) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(-0.5deg); }
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+@keyframes wavePulse {
+  0%,100% { transform: scaleY(0.3); }
+  50%      { transform: scaleY(1); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Right form panel ────────────────────────────────────────────────────────── */
+.formPanel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+
+.formCard {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Mobile brand */
+.mobileBrand {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.mobileBrandIcon {
+  width: 32px; height: 32px;
+  background: #0058BE; border-radius: 8px;
+  display: grid; place-items: center; color: #fff;
+}
+
+.formTitle {
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.025em; color: var(--color-text);
+  margin-bottom: 6px;
+}
+.formSub {
+  font-size: 14px; color: var(--color-text-secondary); margin-bottom: 28px;
+}
+
+.form  { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.label { font-size: 13px; font-weight: 500; color: var(--color-text); }
+
+.input {
+  padding: 10px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px; color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.input:focus {
+  outline: none;
+  border-color: #0058BE;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0,88,190,0.12);
+}
+.input::placeholder { color: var(--color-text-muted); }
+
+.error {
+  padding: 10px 13px;
+  background: var(--color-error-light); color: var(--color-error);
+  border-radius: var(--radius-md); font-size: 13px; border: 1px solid #fca5a5;
+}
+
+.submitBtn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px; background: #0058BE; color: #fff;
+  border-radius: var(--radius-md); font-size: 15px; font-weight: 600;
+  margin-top: 4px; transition: background 0.15s, opacity 0.15s;
+}
+.submitBtn:hover:not(:disabled) { background: #004499; }
+.submitBtn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+  border-radius: 50%; animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.switchText { margin-top: 20px; text-align: center; font-size: 13px; color: var(--color-text-secondary); }
+.switchLink { color: #0058BE; font-weight: 500; }
+.switchLink:hover { text-decoration: underline; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .panel    { width: 44%; }
+  .panelInner { padding: 28px 24px 32px; }
+  .card1    { width: 88%; }
+}
+
+@media (max-width: 640px) {
+  .panel         { display: none; }
+  .page          { background: linear-gradient(135deg, #f0f5ff 0%, #fafbff 100%); }
+  .formPanel     { padding: 24px 16px; }
+  .formCard      { padding: 32px 24px; }
+  .mobileBrand   { display: flex; }
+}

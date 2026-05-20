@@ -1,0 +1,24 @@
+@"
+# Secrets
+.env
+*.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+dist/
+build/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+"@ | Out-File -FilePath .gitignore -Encoding utf8

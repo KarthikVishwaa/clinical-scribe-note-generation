@@ -1,0 +1,281 @@
+/* ── Full-screen encounter layout ── */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  background: #eef1f8;
+  overflow: hidden;
+}
+
+.loading {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 16px; min-height: 60vh;
+  color: var(--color-text-muted); font-size: 18px;
+}
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Top header ── */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: #fff;
+  border-bottom: 1.5px solid var(--color-border);
+  flex-shrink: 0;
+  gap: 12px;
+  min-height: 56px;
+}
+
+.headerLeft { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+
+.backBtn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  color: var(--color-text-secondary);
+  background: #fff;
+  transition: all 0.15s;
+  white-space: nowrap; flex-shrink: 0;
+}
+.backBtn:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-primary-light); }
+
+/* ── Patient info ── */
+.patientInfo { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+
+.nameRow { display: flex; align-items: center; gap: 8px; }
+
+.pageTitle {
+  font-size: 18px; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--color-text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Inline edit input */
+.nameEditInput {
+  font-size: 17px; font-weight: 700;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 6px;
+  padding: 3px 9px;
+  color: var(--color-text);
+  background: var(--color-primary-light);
+  outline: none;
+  min-width: 180px;
+}
+
+.nameEditBtn {
+  width: 26px; height: 26px;
+  border-radius: 6px;
+  border: 1.5px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text-muted);
+  display: grid; place-items: center;
+  transition: all 0.15s; flex-shrink: 0;
+}
+.nameEditBtn:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-primary-light); }
+
+.nameConfirmBtn {
+  width: 26px; height: 26px; border-radius: 6px;
+  border: 1.5px solid var(--color-success);
+  background: var(--color-success-light);
+  color: var(--color-success);
+  display: grid; place-items: center; flex-shrink: 0;
+}
+.nameCancelBtn {
+  width: 26px; height: 26px; border-radius: 6px;
+  border: 1.5px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text-muted);
+  display: grid; place-items: center; flex-shrink: 0;
+}
+
+/* Meta row */
+.meta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--color-text-muted); flex-wrap: wrap;
+}
+.metaDot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-border); }
+
+.idBadge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid rgba(0,88,190,0.15);
+  padding: 2px 8px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.02em;
+}
+
+.wsOn {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 700;
+  color: var(--color-success);
+  background: var(--color-success-light);
+  padding: 2px 10px; border-radius: 20px;
+}
+.wsOn::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-success);
+  animation: pulse 1.5s infinite;
+}
+.wsOff {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-border-light);
+  padding: 2px 10px; border-radius: 20px;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* Voice button */
+.voiceBtn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 20px;
+  border: 1.5px solid var(--color-border);
+  font-size: 12px; font-weight: 600;
+  background: #fff; color: #374151;
+  transition: all 0.15s; flex-shrink: 0; white-space: nowrap;
+}
+.voiceBtn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.voiceBtnOn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 20px;
+  border: 1.5px solid #DC2626;
+  font-size: 12px; font-weight: 600;
+  background: #DC2626; color: #fff;
+  transition: all 0.15s; flex-shrink: 0; white-space: nowrap;
+}
+
+/* ── Compact recorder strip ── */
+.recorderStrip {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #0047a8 0%, #0068e0 100%);
+  padding: 8px 20px;
+  box-shadow: 0 2px 12px rgba(0,80,180,0.22);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stripRight {
+  display: flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+}
+.langLabel { color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 600; }
+.langSelect {
+  padding: 5px 10px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 13px; font-weight: 600;
+  outline: none; cursor: pointer;
+}
+.langSelect option { color: #1e293b; background: #fff; }
+
+/* ── Main 3-panel grid — fills remaining height ── */
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.7fr 1fr;
+  gap: 0;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.colLeft, .colCenter, .colRight {
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  border-right: 1.5px solid var(--color-border);
+}
+.colRight { border-right: none; }
+
+/* ── Patient Name Modal ── */
+.nameOverlay {
+  position: fixed; inset: 0;
+  background: rgba(15,25,50,0.55);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+.nameCard {
+  background: #fff;
+  border-radius: 18px;
+  padding: 40px 44px;
+  width: 100%; max-width: 420px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from { opacity:0; transform:translateY(16px) } to { opacity:1; transform:translateY(0) } }
+
+.nameCardIcon {
+  width: 52px; height: 52px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: 14px;
+  display: grid; place-items: center;
+  margin: 0 auto 18px;
+}
+.nameCardTitle {
+  font-size: 20px; font-weight: 800;
+  color: var(--color-text); letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.nameCardSub {
+  font-size: 13px; color: var(--color-text-secondary);
+  margin-bottom: 24px; line-height: 1.5;
+}
+.nameForm { display: flex; flex-direction: column; gap: 12px; }
+.nameInput {
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 15px; color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-align: left;
+}
+.nameInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0,88,190,0.12);
+  background: #fff;
+}
+.nameSubmit {
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 12px;
+  background: var(--color-primary); color: #fff;
+  border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  transition: background 0.15s;
+}
+.nameSubmit:hover:not(:disabled) { background: var(--color-primary-dark); }
+.nameSubmit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .colRight { grid-column: 1 / -1; border-right: none; border-top: 1.5px solid var(--color-border); max-height: 300px; }
+}
+@media (max-width: 720px) {
+  .page { height: auto; overflow: visible; }
+  .grid { grid-template-columns: 1fr; }
+  .colLeft, .colCenter { border-right: none; border-bottom: 1.5px solid var(--color-border); }
+  .colRight { max-height: none; }
+  .recorderStrip { padding: 8px 12px; flex-wrap: wrap; }
+  .nameCard { padding: 28px 24px; margin: 16px; }
+}
